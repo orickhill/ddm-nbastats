@@ -123,39 +123,42 @@ class MinhaWidget extends StatelessWidget{
                               //shrinkWrap: true,
                               padding: EdgeInsets.all(8),
                               itemBuilder: (bc, i){
-                                return Row(
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: SizedBox(
-                                        width: 60,
-                                        height: 60,
-                                        child: Image.asset(jogadores[i].image),
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 2,
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 12),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(jogadores[i].nome),
-                                            Text(jogadores[i].numero.toString()),
-                                          ],
+                                return Container(
+                                  height: 100,
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: SizedBox(
+                                          width: 60,
+                                          height: 60,
+                                          child: Image.asset(jogadores[i].image),
                                         ),
                                       ),
-                                    ),
-                                    Expanded(
-                                        flex: 1,
-                                        child:Center(
-                                          child: IconButton(
-                                            onPressed: (){},
-                                            icon: Icon(jogadores[i].favorito ? Icons.favorite : Icons.favorite_border),
+                                      Expanded(
+                                        flex: 2,
+                                        child: Padding(
+                                          padding: EdgeInsets.symmetric(horizontal: 12),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(jogadores[i].nome),
+                                              Text(jogadores[i].numero.toString()),
+                                            ],
                                           ),
-                                        )
-                                    ),
-                                  ],
+                                        ),
+                                      ),
+                                      Expanded(
+                                          flex: 1,
+                                          child:Center(
+                                            child: IconButton(
+                                              onPressed: (){},
+                                              icon: Icon(jogadores[i].favorito ? Icons.favorite : Icons.favorite_border),
+                                            ),
+                                          ),
+                                      ),
+                                    ],
+                                  ),
                                 );
                               },
                             )
