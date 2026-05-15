@@ -23,12 +23,6 @@ class MinhaApp extends StatelessWidget{
   Widget build(BuildContext bc){
     final largura = MediaQuery.of(bc).size.width;
     String pesquisa = "";
-    final snackBar = SnackBar(
-      content: const Text('Awesome SnackBar!'),
-      duration: const Duration(milliseconds: 1500),
-      width: 280.0, // Width of the SnackBar...
-      behavior: SnackBarBehavior.floating,
-    );
     return MaterialApp(
         title: "Home",
         home: Scaffold(
@@ -41,10 +35,21 @@ class MinhaApp extends StatelessWidget{
                       onPressed: () => print("Voltando"),
                       icon: Icon(Icons.arrow_back, color: Colors.white, size: 40),
                   ),
-                  IconButton(
-                      onPressed: () => print("notificações"),
-                      icon: Icon(Icons.notifications_none, color: Colors.white, size: 40)
-                  ),
+                  Builder(builder: (BuildContext nc){
+                    return IconButton(
+                        onPressed: () {
+                          print("notificações");
+                          final snackBar = SnackBar(
+                            content: const Center(child: Text("Nada para mostrar"),),
+                            duration: const Duration(milliseconds: 2500),
+                            width: 200.0,
+                            behavior: SnackBarBehavior.floating,
+                          );
+                          ScaffoldMessenger.of(nc).showSnackBar(snackBar);
+                        },
+                        icon: Icon(Icons.notifications_none, color: Colors.white, size: 40)
+                    );
+                  })
                 ],
               ),
             ),
@@ -71,14 +76,20 @@ class MinhaApp extends StatelessWidget{
                           if(pesquisa.length >= 3)
                             print("Pesquisando por: " + pesquisa);
                           else {
-                            ScaffoldMessenger.of(bc).showSnackBar(
-                                SnackBar(
-                                  content: const Text('Awesome SnackBar!'),
-                                  duration: const Duration(milliseconds: 1500),
-                                  width: 280.0, // Width of the SnackBar...
-                                  behavior: SnackBarBehavior.floating,
-                                )
-                            );//
+                            print("pesquisa muita curta");
+                            /*final snackBar = SnackBar(
+                              content: const Text('This is a SnackBar!'),
+                              // Optional: Add an action button inside the snackbar
+                              action: SnackBarAction(
+                                label: 'Undo',
+                                onPressed: () {
+                                  // Code to execute when 'Undo' is pressed
+                                },
+                              ),
+                            );
+
+                            // 2. Display it using ScaffoldMessenger
+                            ScaffoldMessenger.of(bc).showSnackBar(snackBar);*/
                           }
                         },
                       ),
