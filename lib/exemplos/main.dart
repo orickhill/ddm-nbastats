@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main(){
   runApp(MinhaApp());
@@ -21,6 +22,13 @@ class MinhaApp extends StatelessWidget{
   ];
   Widget build(BuildContext bc){
     final largura = MediaQuery.of(bc).size.width;
+    String pesquisa = "";
+    final snackBar = SnackBar(
+      content: const Text('Awesome SnackBar!'),
+      duration: const Duration(milliseconds: 1500),
+      width: 280.0, // Width of the SnackBar...
+      behavior: SnackBarBehavior.floating,
+    );
     return MaterialApp(
         title: "Home",
         home: Scaffold(
@@ -45,18 +53,34 @@ class MinhaApp extends StatelessWidget{
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Pesquisar jogadores", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  /*Padding(
+                  //Text("Pesquisar jogadores", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  Padding(
                     padding: EdgeInsets.only(bottom: 15),
                     child: Text("Pesquisar jogadores", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  ),*/
+                  ),
                   TextField(
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z\s]"))],
+                    keyboardType: TextInputType.text,
+                    onChanged: (texto) => pesquisa = texto, // alimentando a variável de pesquisa
                     decoration: InputDecoration(
                       hintText: "Pesquisar jogador...",
-                      border: const OutlineInputBorder(),
+                      border: OutlineInputBorder(),
                       suffixIcon: IconButton(
-                        icon: const Icon(Icons.search),
-                        onPressed: () => print("Pesquisando..."),
+                        icon: Icon(Icons.search),
+                        onPressed: () {
+                          if(pesquisa.length >= 3)
+                            print("Pesquisando por: " + pesquisa);
+                          else {
+                            ScaffoldMessenger.of(bc).showSnackBar(
+                                SnackBar(
+                                  content: const Text('Awesome SnackBar!'),
+                                  duration: const Duration(milliseconds: 1500),
+                                  width: 280.0, // Width of the SnackBar...
+                                  behavior: SnackBarBehavior.floating,
+                                )
+                            );//
+                          }
+                        },
                       ),
                     ),
                   ),
