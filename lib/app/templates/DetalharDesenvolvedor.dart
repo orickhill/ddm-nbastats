@@ -71,12 +71,174 @@ class DetalharDesenvolvedor extends StatelessWidget{
                   ),
                 ],
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: 115,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.deepPurple,
+                        border: Border.all(
+                          color: Colors.deepPurple, // Border color
+                          width: 2.0,         // Border thickness
+                        ),
+                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
+                    ),
+                    child: const Center(
+                      child: Text('Sobre mim', style: TextStyle(color: Colors.white)),
+                    ),
+                  ),
+                  Container(
+                    width: 125,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.deepPurple, // Border color
+                          width: 2.0,         // Border thickness
+                        ),
+                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
+                    ),
+                    child: const Center(
+                      child: Text('Sistemas Desenvolvidos'),
+                    ),
+                  ),
+                  Container(
+                    width: 115,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.deepPurple, // Border color
+                          width: 2.0,         // Border thickness
+                        ),
+                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
+                    ),
+                    child: const Center(
+                      child: Text('Avaliações'),
+                    ),
+                  )
+                ],
+              ),
               Column(
                 children: [
-                  Text("Sobre mim",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                  Align(
+                    alignment: AlignmentGeometry.topLeft,
+                    child: Text("Sobre mim",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                  ),
                   Text(
                       desenvolvedores[0].desc,
                       style: TextStyle(color: Color(0xFF323232), fontSize: 15)
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  Align(
+                    alignment: AlignmentGeometry.topLeft,
+                    child: Text("Sistemas Desenvolvidos",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: 100,
+                            height: 100,
+                            child: Image.asset('images/barbearia.jpg'),
+                          ),
+                          Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                          Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: 100,
+                            height: 100,
+                            child: Image.asset('images/barbearia.jpg'),
+                          ),
+                          Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                          Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  Align(
+                    alignment: AlignmentGeometry.topLeft,
+                    child: Text("Avaliações",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: AlignmentGeometry.topLeft,
+                            child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
+                          ),
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                ],
+                              ),
+                              Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                            ],
+                          )
+                        ],
+                      ),
+                      Align(
+                        alignment: AlignmentGeometry.topLeft,
+                        child: Text(
+                            "Excelente profissional!",
+                            style: TextStyle(color: Color(0xFF323232), fontSize: 18)
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: AlignmentGeometry.topLeft,
+                            child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
+                          ),
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                ],
+                              ),
+                              Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                            ],
+                          )
+                        ],
+                      ),
+                      Align(
+                        alignment: AlignmentGeometry.topLeft,
+                        child: Text(
+                            "Excelente profissional!",
+                            style: TextStyle(color: Color(0xFF323232), fontSize: 18)
+                        ),
+                      )
+                    ],
                   ),
                 ],
               )
