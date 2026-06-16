@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:projeto/app/Models/Desenvolvedor.dart';
 
-void main(){
+/*void main(){
   runApp(DetalharDesenvolvedor());
-}
+}*/
 
 class DetalharDesenvolvedor extends StatelessWidget{
   final List<Desenvolvedor> desenvolvedores = <Desenvolvedor>[
@@ -21,6 +22,7 @@ class DetalharDesenvolvedor extends StatelessWidget{
     Desenvolvedor(11, 'images/jogadores/podziemsk.jpg', "Brandin Podziemski", 2, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
   ];
   Widget build(BuildContext bc){
+    final args = ModalRoute.of(bc)!.settings.arguments as Desenvolvedor;
     return MaterialApp(
       title: 'Detalhes',
       home: Scaffold(
@@ -50,12 +52,12 @@ class DetalharDesenvolvedor extends StatelessWidget{
                   SizedBox(
                     width: 120,
                     height: 120,
-                    child: Image.asset(desenvolvedores[0].image),
+                    child: Image.asset(args.image),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(desenvolvedores[0].nome, style: TextStyle(color: Color(0xFF323232), fontSize: 22)),
+                      Text(args.nome, style: TextStyle(color: Color(0xFF323232), fontSize: 22)),
                       Row(
                         children: [
                           Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
@@ -63,7 +65,7 @@ class DetalharDesenvolvedor extends StatelessWidget{
                           Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
                           Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
                           Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                          Text(" (5.0 - " + desenvolvedores[0].avaliacao.toString() + " avalações)", style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                          Text(" (5.0 - " + args.avaliacao.toString() + " avalações)", style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
                         ],
                       ),
                       Text("Setores: E-commerce, beleza, IA.", style: TextStyle(color: Color(0xFF323232), fontSize: 15))
@@ -72,7 +74,7 @@ class DetalharDesenvolvedor extends StatelessWidget{
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
                     width: 115,
@@ -85,22 +87,8 @@ class DetalharDesenvolvedor extends StatelessWidget{
                         ),
                         borderRadius: BorderRadius.circular(150) // Optional: rounded corners
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text('Sobre mim', style: TextStyle(color: Colors.white)),
-                    ),
-                  ),
-                  Container(
-                    width: 125,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.deepPurple, // Border color
-                          width: 2.0,         // Border thickness
-                        ),
-                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
-                    ),
-                    child: const Center(
-                      child: Text('Sistemas Desenvolvidos'),
                     ),
                   ),
                   Container(
@@ -113,7 +101,21 @@ class DetalharDesenvolvedor extends StatelessWidget{
                         ),
                         borderRadius: BorderRadius.circular(150) // Optional: rounded corners
                     ),
-                    child: const Center(
+                    child: Center(
+                      child: Text('Projetos'),
+                    ),
+                  ),
+                  Container(
+                    width: 115,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.deepPurple, // Border color
+                          width: 2.0,         // Border thickness
+                        ),
+                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
+                    ),
+                    child: Center(
                       child: Text('Avaliações'),
                     ),
                   )
@@ -126,7 +128,7 @@ class DetalharDesenvolvedor extends StatelessWidget{
                     child: Text("Sobre mim",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
                   ),
                   Text(
-                      desenvolvedores[0].desc,
+                      args.desc,
                       style: TextStyle(color: Color(0xFF323232), fontSize: 15)
                   ),
                 ],
@@ -135,7 +137,7 @@ class DetalharDesenvolvedor extends StatelessWidget{
                 children: [
                   Align(
                     alignment: AlignmentGeometry.topLeft,
-                    child: Text("Sistemas Desenvolvidos",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                    child: Text("Projetos",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -248,14 +250,4 @@ class DetalharDesenvolvedor extends StatelessWidget{
       ),
     );
   }
-}
-
-class Desenvolvedor {
-  int id;
-  String image;
-  String nome;
-  int avaliacao;
-  bool favorito;
-  String desc;
-  Desenvolvedor(this.id, this.image, this.nome, this.avaliacao, this.favorito, this.desc);
 }

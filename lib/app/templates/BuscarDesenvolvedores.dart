@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:projeto/app/Models/Desenvolvedor.dart';
 
-void main(){
+/*void main(){
   runApp(MinhaApp());
-}
+}*/
 
-class MinhaApp extends StatelessWidget{
+class Buscardesenvolvedores extends StatelessWidget{
   final List<Desenvolvedor> desenvolvedores = <Desenvolvedor>[
     Desenvolvedor(0, 'images/jogadores/santos.png', "Gui Santos", 15, true, "Guilherme Carvalho dos Santos (born 22 June 2002) is a Brazilian professional basketball player for the Golden State Warriors of the National Basketball Association (NBA)."),
     Desenvolvedor(1, 'images/jogadores/green.png', "Draymond Green", 23, true, "Draymond Jamal Green Sr. (born March 4, 1990) is an American professional basketball player for the Golden State Warriors of… frontcourt players capable of playing and defending multiple positions, making plays for teammates, and spacing the floor."),
@@ -32,7 +33,7 @@ class MinhaApp extends StatelessWidget{
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  onPressed: () => print("Voltando"),
+                  onPressed: () => Navigator.pop(bc),
                   icon: Icon(Icons.arrow_back, color: Colors.white, size: 40),
                 ),
                 Builder(builder: (BuildContext nc){
@@ -117,6 +118,7 @@ class MinhaApp extends StatelessWidget{
                           child: GestureDetector(
                             onTap: (){
                               Desenvolvedor j = desenvolvedores[index];
+                              Navigator.pushNamed(bc, "/detalhes", arguments: desenvolvedores[index]);
                               print("Detalhes de ${j.nome} abaixo: ");
                               print("ID: ${j.id}");
                               print("Nome: ${j.nome}");
@@ -221,14 +223,4 @@ class MinhaApp extends StatelessWidget{
         )
     );
   }
-}
-
-class Desenvolvedor {
-  int id;
-  String image;
-  String nome;
-  int avaliacao;
-  bool favorito;
-  String desc;
-  Desenvolvedor(this.id, this.image, this.nome, this.avaliacao, this.favorito, this.desc);
 }

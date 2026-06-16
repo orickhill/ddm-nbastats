@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto/app/templates/BuscarDesenvolvedores.dart';
+import 'package:projeto/app/templates/DetalharDesenvolvedor.dart';
+import 'package:projeto/app/templates/Home.dart';
+import 'package:projeto/app/templates/Login.dart';
 
 void main(){
   runApp(MinhaApp());
@@ -22,95 +26,13 @@ class MinhaApp extends StatelessWidget{
   Widget build(BuildContext bc){
     final largura = MediaQuery.of(bc).size.width;
     return MaterialApp(
-        title: "Home",
-        home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: const Color(0xFF17408B),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  onPressed: () => print("Voltando"),
-                  icon: Icon(Icons.arrow_back, color: Colors.white, size: 40),
-                ),
-                IconButton(
-                    onPressed: () => print("notificações"),
-                    icon: Icon(Icons.notifications_none, color: Colors.white, size: 40)
-                ),
-              ],
-            ),
-          ),
-          body: Padding(
-            padding: EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Pesquisar jogadores", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                /*Padding(
-                    padding: EdgeInsets.only(bottom: 15),
-                    child: Text("Pesquisar jogadores", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                  ),*/
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: "Pesquisar jogador...",
-                    border: const OutlineInputBorder(),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.search),
-                      onPressed: () => print("Pesquisando..."),
-                    ),
-                  ),
-                ),
-
-                Expanded(
-                    child: GridView.count(
-                      crossAxisCount: largura > 1000 ? 4 : (largura > 700 ? 3 : (largura > 500 ? 2 : 1)),
-                      crossAxisSpacing: 6,
-                      mainAxisSpacing: 6,
-                      mainAxisExtent: 100,
-                      children: List.generate(jogadores.length, (index) {
-                        return Padding(
-                          padding: EdgeInsets.all(8),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 60,
-                                height: 60,
-                                child: Image.asset(jogadores[index].image),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 15, right: 15),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(jogadores[index].nome, style: TextStyle(color: Color(0xFF323232))),
-                                      Text("# " + jogadores[index].numero.toString(), style: TextStyle(color: Color(0xFFC9082A))),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Center(
-                                child: IconButton(
-                                  onPressed: (){},
-                                  icon: Icon(
-                                      jogadores[index].favorito ? Icons.favorite : Icons.favorite_border,
-                                      color: Color(jogadores[index].favorito ? 0xFFC9082A : 0xFF17408B)
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                      ),
-                    )
-                ),
-              ],
-            ),
-          ),
-        )
+      initialRoute: "/login",
+      routes: {
+        "/": (c){return Home();},
+        "/buscar": (c){return Buscardesenvolvedores();},
+        "/detalhes": (c){return DetalharDesenvolvedor();},
+        "/login": (c){return Login();},
+      },
     );
   }
 }
