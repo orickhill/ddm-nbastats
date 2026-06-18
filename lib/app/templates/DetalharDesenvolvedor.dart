@@ -23,229 +23,238 @@ class DetalharDesenvolvedor extends StatelessWidget{
   ];
   Widget build(BuildContext bc){
     final args = ModalRoute.of(bc)!.settings.arguments as Desenvolvedor;
-    return MaterialApp(
-      title: 'Detalhes',
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(0xFF682EA3),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                onPressed: () => print("Voltando"),
-                icon: Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 40),
-              ),
-              IconButton(
-                  onPressed: () => print("compartilhando..."),
-                  icon: Icon(Icons.share, color: Colors.white, size: 40)
-              ),
-            ],
-          ),
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(15),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  SizedBox(
-                    width: 120,
-                    height: 120,
-                    child: Image.asset(args.image),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(args.nome, style: TextStyle(color: Color(0xFF323232), fontSize: 22)),
-                      Row(
-                        children: [
-                          Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                          Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                          Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                          Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                          Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                          Text(" (5.0 - " + args.avaliacao.toString() + " avalações)", style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
-                        ],
-                      ),
-                      Text("Setores: E-commerce, beleza, IA.", style: TextStyle(color: Color(0xFF323232), fontSize: 15))
-                    ],
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: 115,
-                    height: 50,
-                    decoration: BoxDecoration(
+    return Scaffold(
+      appBar: AppBar(
+        actionsPadding: EdgeInsets.all(15),
+        iconTheme: IconThemeData(color: Colors.white, size: 40),
+        backgroundColor: const Color(0xFF682EA3),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(args.nome.toString(), style: TextStyle(color: Colors.white, fontSize: 25),),
+            IconButton(
+                onPressed: () => print("compartilhando..."),
+                icon: Icon(Icons.share, color: Colors.white, size: 40)
+            ),
+          ],
+        )
+        /*Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () => Navigator.pop(bc),
+              icon: Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 40),
+            ),
+            IconButton(
+                onPressed: () => print("compartilhando..."),
+                icon: Icon(Icons.share, color: Colors.white, size: 40)
+            ),
+          ],
+        ),*/
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(15),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox(
+                  width: 120,
+                  height: 120,
+                  child: Image.asset(args.image),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(args.nome, style: TextStyle(color: Color(0xFF323232), fontSize: 22)),
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
+                        Text(" (5.0 - " + args.avaliacao.toString() + " avalações)", style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                      ],
+                    ),
+                    Text("Setores: E-commerce, beleza, IA.", style: TextStyle(color: Color(0xFF323232), fontSize: 15))
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  width: 115,
+                  height: 50,
+                  decoration: BoxDecoration(
                       color: Colors.deepPurple,
-                        border: Border.all(
-                          color: Colors.deepPurple, // Border color
-                          width: 2.0,         // Border thickness
-                        ),
-                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
-                    ),
-                    child: Center(
-                      child: Text('Sobre mim', style: TextStyle(color: Colors.white)),
-                    ),
-                  ),
-                  Container(
-                    width: 115,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.deepPurple, // Border color
-                          width: 2.0,         // Border thickness
-                        ),
-                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
-                    ),
-                    child: Center(
-                      child: Text('Projetos'),
-                    ),
-                  ),
-                  Container(
-                    width: 115,
-                    height: 50,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.deepPurple, // Border color
-                          width: 2.0,         // Border thickness
-                        ),
-                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
-                    ),
-                    child: Center(
-                      child: Text('Avaliações'),
-                    ),
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Align(
-                    alignment: AlignmentGeometry.topLeft,
-                    child: Text("Sobre mim",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
-                  ),
-                  Text(
-                      args.desc,
-                      style: TextStyle(color: Color(0xFF323232), fontSize: 15)
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  Align(
-                    alignment: AlignmentGeometry.topLeft,
-                    child: Text("Projetos",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 100,
-                            height: 100,
-                            child: Image.asset('images/barbearia.jpg'),
-                          ),
-                          Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
-                          Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
-                        ],
+                      border: Border.all(
+                        color: Colors.deepPurple, // Border color
+                        width: 2.0,         // Border thickness
                       ),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: 100,
-                            height: 100,
-                            child: Image.asset('images/barbearia.jpg'),
-                          ),
-                          Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
-                          Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  Align(
-                    alignment: AlignmentGeometry.topLeft,
-                    child: Text("Avaliações",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                      borderRadius: BorderRadius.circular(150) // Optional: rounded corners
                   ),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Align(
-                            alignment: AlignmentGeometry.topLeft,
-                            child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
-                          ),
-                          Row(
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                ],
-                              ),
-                              Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
-                            ],
-                          )
-                        ],
+                  child: Center(
+                    child: Text('Sobre mim', style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+                Container(
+                  width: 115,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.deepPurple, // Border color
+                        width: 2.0,         // Border thickness
                       ),
-                      Align(
-                        alignment: AlignmentGeometry.topLeft,
-                        child: Text(
-                            "Excelente profissional!",
-                            style: TextStyle(color: Color(0xFF323232), fontSize: 18)
-                        ),
-                      )
-                    ],
+                      borderRadius: BorderRadius.circular(150) // Optional: rounded corners
                   ),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Align(
-                            alignment: AlignmentGeometry.topLeft,
-                            child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
-                          ),
-                          Row(
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                  Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                ],
-                              ),
-                              Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
-                            ],
-                          )
-                        ],
+                  child: Center(
+                    child: Text('Projetos'),
+                  ),
+                ),
+                Container(
+                  width: 115,
+                  height: 50,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.deepPurple, // Border color
+                        width: 2.0,         // Border thickness
                       ),
-                      Align(
-                        alignment: AlignmentGeometry.topLeft,
-                        child: Text(
-                            "Excelente profissional!",
-                            style: TextStyle(color: Color(0xFF323232), fontSize: 18)
-                        ),
-                      )
-                    ],
+                      borderRadius: BorderRadius.circular(150) // Optional: rounded corners
                   ),
-                ],
-              )
-            ],
-          ),
+                  child: Center(
+                    child: Text('Avaliações'),
+                  ),
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Align(
+                  alignment: AlignmentGeometry.topLeft,
+                  child: Text("Sobre mim",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                ),
+                Text(
+                    args.desc,
+                    style: TextStyle(color: Color(0xFF323232), fontSize: 15)
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                Align(
+                  alignment: AlignmentGeometry.topLeft,
+                  child: Text("Projetos",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: Image.asset('images/barbearia.jpg'),
+                        ),
+                        Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                        Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          height: 100,
+                          child: Image.asset('images/barbearia.jpg'),
+                        ),
+                        Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                        Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+            Column(
+              children: [
+                Align(
+                  alignment: AlignmentGeometry.topLeft,
+                  child: Text("Avaliações",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: AlignmentGeometry.topLeft,
+                          child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
+                        ),
+                        Row(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                              ],
+                            ),
+                            Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                          ],
+                        )
+                      ],
+                    ),
+                    Align(
+                      alignment: AlignmentGeometry.topLeft,
+                      child: Text(
+                          "Excelente profissional!",
+                          style: TextStyle(color: Color(0xFF323232), fontSize: 18)
+                      ),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Align(
+                          alignment: AlignmentGeometry.topLeft,
+                          child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
+                        ),
+                        Row(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                              ],
+                            ),
+                            Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                          ],
+                        )
+                      ],
+                    ),
+                    Align(
+                      alignment: AlignmentGeometry.topLeft,
+                      child: Text(
+                          "Excelente profissional!",
+                          style: TextStyle(color: Color(0xFF323232), fontSize: 18)
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );

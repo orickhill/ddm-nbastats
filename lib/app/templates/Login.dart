@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto/app/templates/Home.dart';
 import 'package:flutter/services.dart';
+import 'package:projeto/app/templates/NavigationHub.dart';
 
 class Login extends StatelessWidget{
 
@@ -18,7 +19,8 @@ class Login extends StatelessWidget{
               FloatingActionButton(
                 heroTag: "Home",
                 onPressed: (){
-                  Navigator.of(bc).pushReplacement(MaterialPageRoute(builder: (bc) => Home()));
+                  Navigator.pushReplacementNamed(bc, '/home');
+                  //Navigator.of(bc).pushReplacement(MaterialPageRoute(builder: (bc) => NavigationHub()));
                 },
                 child: Text("Home"),
               ),

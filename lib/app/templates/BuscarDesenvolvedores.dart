@@ -27,33 +27,6 @@ class Buscardesenvolvedores extends StatelessWidget{
     return MaterialApp(
         title: "Home",
         home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: const Color(0xFF682EA3),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  onPressed: () => Navigator.pop(bc),
-                  icon: Icon(Icons.arrow_back, color: Colors.white, size: 40),
-                ),
-                Builder(builder: (BuildContext nc){
-                  return IconButton(
-                      onPressed: () {
-                        print("notificações");
-                        final snackBar = SnackBar(
-                          content: const Center(child: Text("Nada para mostrar"),),
-                          duration: const Duration(milliseconds: 2500),
-                          width: 200.0,
-                          behavior: SnackBarBehavior.floating,
-                        );
-                        ScaffoldMessenger.of(nc).showSnackBar(snackBar);
-                      },
-                      icon: Icon(Icons.notifications_none, color: Colors.white, size: 40)
-                  );
-                })
-              ],
-            ),
-          ),
           body: Padding(
             padding: EdgeInsets.all(15),
             child: Column(
