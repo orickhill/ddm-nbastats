@@ -4,6 +4,7 @@ import 'package:projeto/app/templates/BuscarDesenvolvedores.dart';
 import 'package:projeto/app/templates/DetalharDesenvolvedor.dart';
 import 'package:projeto/app/templates/Home.dart';
 import 'package:projeto/app/templates/Login.dart';
+import 'package:projeto/app/templates/MostrarAvaliacoes.dart';
 import 'package:projeto/app/templates/Perfil.dart';
 import 'package:projeto/app/templates/Settings.dart';
 import 'package:projeto/app/templates/NavigationHub.dart';
@@ -32,6 +33,7 @@ class MinhaApp extends StatelessWidget{
         "/detalhes": (c){return DetalharDesenvolvedor();},
         "/settings": (c){return Settings();},
         "/login": (c){return Login();},
+        "/avaliacoes": (c){return Mostraravaliacoes();},
       },
     );
   }

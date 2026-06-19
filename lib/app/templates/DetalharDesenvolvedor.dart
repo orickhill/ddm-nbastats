@@ -178,81 +178,23 @@ class DetalharDesenvolvedor extends StatelessWidget{
                 )
               ],
             ),
-            Column(
-              children: [
-                Align(
-                  alignment: AlignmentGeometry.topLeft,
-                  child: Text("Avaliações",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          alignment: AlignmentGeometry.topLeft,
-                          child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
-                        ),
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                              ],
-                            ),
-                            Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
-                          ],
-                        )
-                      ],
-                    ),
-                    Align(
-                      alignment: AlignmentGeometry.topLeft,
-                      child: Text(
-                          "Excelente profissional!",
-                          style: TextStyle(color: Color(0xFF323232), fontSize: 18)
-                      ),
-                    )
-                  ],
-                ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          alignment: AlignmentGeometry.topLeft,
-                          child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
-                        ),
-                        Row(
-                          children: [
-                            Row(
-                              children: [
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                                Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
-                              ],
-                            ),
-                            Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
-                          ],
-                        )
-                      ],
-                    ),
-                    Align(
-                      alignment: AlignmentGeometry.topLeft,
-                      child: Text(
-                          "Excelente profissional!",
-                          style: TextStyle(color: Color(0xFF323232), fontSize: 18)
-                      ),
-                    )
-                  ],
-                ),
-              ],
+            Padding(
+              padding: EdgeInsets.all(15),
+              child: Column(
+                children: [
+                  Center(
+                    child: Text("Veja algumas avaliações"),
+                  ),
+                  FloatingActionButton(
+                    heroTag: "Avaliações",
+                    onPressed: (){
+                      Navigator.pushNamed(bc, '/avaliacoes');
+                      //Navigator.of(bc).pushReplacement(MaterialPageRoute(builder: (bc) => NavigationHub()));
+                    },
+                    child: Text("Clicar"),
+                  ),
+                ],
+              ),
             )
           ],
         ),
