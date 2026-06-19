@@ -1,36 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:projeto/app/Models/Desenvolvedor.dart';
+import 'package:projeto/app/Providers/ControleFavoritos.dart';
+import 'package:provider/provider.dart';
 
 /*void main(){
   runApp(MinhaApp());
 }*/
+/*class BuscarDesenvolvedores extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: BuscarDesenvolvedoresState(),
+    );
+  }
+}*/
 
-class Buscardesenvolvedores extends StatelessWidget{
-  final List<Desenvolvedor> desenvolvedores = <Desenvolvedor>[
-    Desenvolvedor(0, 'images/jogadores/santos.png', "Gui Santos", 15, true, "Guilherme Carvalho dos Santos (born 22 June 2002) is a Brazilian professional basketball player for the Golden State Warriors of the National Basketball Association (NBA)."),
-    Desenvolvedor(1, 'images/jogadores/green.png', "Draymond Green", 23, true, "Draymond Jamal Green Sr. (born March 4, 1990) is an American professional basketball player for the Golden State Warriors of… frontcourt players capable of playing and defending multiple positions, making plays for teammates, and spacing the floor."),
+class BuscarDesenvolvedores extends StatefulWidget{
+  _BuscarDesenvolvedores createState() => _BuscarDesenvolvedores();
+}
+
+class _BuscarDesenvolvedores extends State {
+  final List<Desenvolvedor> desenvolvedoresFull = <Desenvolvedor>[
+    Desenvolvedor(0, 'images/jogadores/santos.png', "Gui Santos", 15, false, "Guilherme Carvalho dos Santos (born 22 June 2002) is a Brazilian professional basketball player for the Golden State Warriors of the National Basketball Association (NBA)."),
+    Desenvolvedor(1, 'images/jogadores/green.png', "Draymond Green", 23, false, "Draymond Jamal Green Sr. (born March 4, 1990) is an American professional basketball player for the Golden State Warriors of… frontcourt players capable of playing and defending multiple positions, making plays for teammates, and spacing the floor."),
     Desenvolvedor(2, 'images/jogadores/horford.jpg', "Al Horford", 20, false, "Alfred Joel Horford Reynoso OMDSM (born June 3, 1986), nicknamed Big Al, is a Dominican professional basketball player for t…prior to the 2021 season. He reached the NBA Finals with the Celtics in 2022 and 2024, winning his first NBA title in 2024."),
-    Desenvolvedor(3, 'images/jogadores/curry.png', "Stephen Curry", 30, true, "Stephen Curry (born March 14, 1988) is an American professional basketball player for the Golden State Warriors, widely recognized as the greatest shooter in NBA history."),
+    Desenvolvedor(3, 'images/jogadores/curry.png', "Stephen Curry", 30, false, "Stephen Curry (born March 14, 1988) is an American professional basketball player for the Golden State Warriors, widely recognized as the greatest shooter in NBA history."),
     Desenvolvedor(4, 'images/jogadores/melton.jpg', "De'Anthony Melton", 8, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
     Desenvolvedor(5, 'images/jogadores/podziemsk.jpg', "Brandin Podziemski", 2, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
-    Desenvolvedor(6, 'images/jogadores/santos.png', "Gui Santos", 15, true, "Guilherme Carvalho dos Santos (born 22 June 2002) is a Brazilian professional basketball player for the Golden State Warriors of the National Basketball Association (NBA)."),
-    Desenvolvedor(7, 'images/jogadores/green.png', "Draymond Green", 23, true, "Draymond Jamal Green Sr. (born March 4, 1990) is an American professional basketball player for the Golden State Warriors of… frontcourt players capable of playing and defending multiple positions, making plays for teammates, and spacing the floor."),
+    Desenvolvedor(6, 'images/jogadores/santos.png', "Gui Santos", 15, false, "Guilherme Carvalho dos Santos (born 22 June 2002) is a Brazilian professional basketball player for the Golden State Warriors of the National Basketball Association (NBA)."),
+    Desenvolvedor(7, 'images/jogadores/green.png', "Draymond Green", 23, false, "Draymond Jamal Green Sr. (born March 4, 1990) is an American professional basketball player for the Golden State Warriors of… frontcourt players capable of playing and defending multiple positions, making plays for teammates, and spacing the floor."),
     Desenvolvedor(8, 'images/jogadores/horford.jpg', "Al Horford", 20, false, "Alfred Joel Horford Reynoso OMDSM (born June 3, 1986), nicknamed Big Al, is a Dominican professional basketball player for t…prior to the 2021 season. He reached the NBA Finals with the Celtics in 2022 and 2024, winning his first NBA title in 2024."),
-    Desenvolvedor(9, 'images/jogadores/curry.png', "Stephen Curry", 30, true, "Stephen Curry (born March 14, 1988) is an American professional basketball player for the Golden State Warriors, widely recognized as the greatest shooter in NBA history."),
+    Desenvolvedor(9, 'images/jogadores/curry.png', "Stephen Curry", 30, false, "Stephen Curry (born March 14, 1988) is an American professional basketball player for the Golden State Warriors, widely recognized as the greatest shooter in NBA history."),
     Desenvolvedor(10, 'images/jogadores/melton.jpg', "De'Anthony Melton", 8, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
     Desenvolvedor(11, 'images/jogadores/podziemsk.jpg', "Brandin Podziemski", 2, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
   ];
+
   Widget build(BuildContext bc){
+    List<Desenvolvedor> desenvolvedores = desenvolvedoresFull;
     final largura = MediaQuery.of(bc).size.width;
     String pesquisa = "";
+
+    final favoritosProvider = bc.watch<ControleFavoritos>();
+
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //Text("Pesquisar jogadores", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             Padding(
               padding: EdgeInsets.only(bottom: 15),
               child: Text("Pesquisar Desenvolvedores", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
@@ -49,11 +66,20 @@ class Buscardesenvolvedores extends StatelessWidget{
                       if(pesquisa.length >= 3){
                         print("Pesquisando por: " + pesquisa);
                         //int i = 0;
-                        for(int i = 0; i < desenvolvedores.length; i++){
-                          Desenvolvedor j = desenvolvedores[i];
-                          if(j.nome.contains(RegExp(pesquisa, caseSensitive: false)))
-                            print("${j.id}: - ${j.nome} - ${j.avaliacao} - ${j.favorito}");
+
+                        List<Desenvolvedor> desenvolvedoresFtds = [];
+                        for(int i = 0; i < desenvolvedoresFull.length; i++){
+                          Desenvolvedor dev = desenvolvedoresFull[i];
+                          if(dev.nome.contains(RegExp(pesquisa, caseSensitive: false))){
+                            print("${dev.id}: - ${dev.nome} - ${dev.avaliacao} - ${dev.favorito}");
+
+                            desenvolvedoresFtds.add(dev);
+                          }
                         }
+
+                        setState(() {
+                          desenvolvedores = desenvolvedoresFtds;
+                        });
                       } else {
                         print("pesquisa muito curta");
                         final snackBar = SnackBar(
@@ -109,12 +135,6 @@ class Buscardesenvolvedores extends StatelessWidget{
                                     duration: Duration(seconds: 10),
                                     behavior: SnackBarBehavior.floating,
                                     showCloseIcon: true,
-                                    /*action: SnackBarAction(
-                                  label: 'Desfazeres',
-                                  onPressed: () {
-                                    print("Descurtido...");
-                                  },
-                                ),*/ // Action
                                   );
 
                                   ScaffoldMessenger.of(nc).showSnackBar(snackBar);
@@ -148,14 +168,14 @@ class Buscardesenvolvedores extends StatelessWidget{
                               ),
                             ),
                             Builder(builder: (BuildContext nc){
+                              bool eFavorito = favoritosProvider.isFavorito(index); // verifica favorito
                               return Center(
                                 child: IconButton(
                                   onPressed: (){
-                                    Desenvolvedor j = desenvolvedores[index];
-                                    print("favorito? ${j.favorito}");
-                                    j.favorito = !j.favorito;
-                                    print("favorito? ${j.favorito}");
-                                    String feedback = j.favorito ? "${j.nome} adicionado a favoritos." : "${j.nome} removido de favoritos.";
+                                    Desenvolvedor dev = desenvolvedores[index];
+                                    //j.favorito = !j.favorito;
+                                    favoritosProvider.atualizar(index); // atualiza favorito
+                                    String feedback = !eFavorito ? "${dev.nome} adicionado a favoritos." : "${dev.nome} removido de favoritos.";
                                     final snackBar = SnackBar(
                                       content: Center(child: Text(feedback)),
                                       duration: Duration(seconds: 5),
@@ -164,18 +184,17 @@ class Buscardesenvolvedores extends StatelessWidget{
                                       action: SnackBarAction(
                                         label: 'Desfazer',
                                         onPressed: () {
-                                          //print("Descurtido...");
-                                          j.favorito = !j.favorito;
-                                          print("favorito? ${j.favorito}");
+                                          favoritosProvider.atualizar(index); // atualiza favorito
+                                          //j.favorito = !j.favorito;
                                         },
-                                      ), // Action
+                                      ),
                                     );
 
                                     ScaffoldMessenger.of(nc).showSnackBar(snackBar);
                                   },
                                   icon: Icon(
-                                      desenvolvedores[index].favorito ? Icons.favorite : Icons.favorite_border,
-                                      color: Color(desenvolvedores[index].favorito ? 0xFFC9082A : 0xFF682EA3)
+                                      eFavorito ? Icons.favorite : Icons.favorite_border,
+                                      color: Color(eFavorito ? 0xFFC9082A : 0xFF682EA3)
                                   ),
                                 ),
                               );

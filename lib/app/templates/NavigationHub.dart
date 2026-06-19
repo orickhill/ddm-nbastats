@@ -11,7 +11,7 @@ class NavigationHub extends StatelessWidget{
 
   final List<Widget> _telas = [
     Home(),
-    Buscardesenvolvedores(),
+    BuscarDesenvolvedores(),
     Perfil(),
   ];
   Widget build(BuildContext bc){

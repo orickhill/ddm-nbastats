@@ -1,6 +1,7 @@
 //Exemplo 7 - Estado global da aplicação com Controle Deslizante
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 void main() {
   runApp(
       ChangeNotifierProvider(
@@ -8,7 +9,7 @@ void main() {
           child: MinhaApp()
       )
   );
-}
+}// Adaptado
 
 class MinhaApp extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class ModeloControleDeslizante extends ChangeNotifier{
     print("Valor: ${this.valor}");
     notifyListeners();
   }
-}
+} // adaptado
 
 class ControleDeslizante extends StatefulWidget {
   _ControleDeslizante createState() => _ControleDeslizante();
