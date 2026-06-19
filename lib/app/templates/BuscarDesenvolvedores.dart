@@ -21,24 +21,30 @@ class BuscarDesenvolvedores extends StatefulWidget{
 
 class _BuscarDesenvolvedores extends State {
   final List<Desenvolvedor> desenvolvedoresFull = <Desenvolvedor>[
-    Desenvolvedor(0, 'images/jogadores/santos.png', "Gui Santos", 15, false, "Guilherme Carvalho dos Santos (born 22 June 2002) is a Brazilian professional basketball player for the Golden State Warriors of the National Basketball Association (NBA)."),
-    Desenvolvedor(1, 'images/jogadores/green.png', "Draymond Green", 23, false, "Draymond Jamal Green Sr. (born March 4, 1990) is an American professional basketball player for the Golden State Warriors of… frontcourt players capable of playing and defending multiple positions, making plays for teammates, and spacing the floor."),
-    Desenvolvedor(2, 'images/jogadores/horford.jpg', "Al Horford", 20, false, "Alfred Joel Horford Reynoso OMDSM (born June 3, 1986), nicknamed Big Al, is a Dominican professional basketball player for t…prior to the 2021 season. He reached the NBA Finals with the Celtics in 2022 and 2024, winning his first NBA title in 2024."),
-    Desenvolvedor(3, 'images/jogadores/curry.png', "Stephen Curry", 30, false, "Stephen Curry (born March 14, 1988) is an American professional basketball player for the Golden State Warriors, widely recognized as the greatest shooter in NBA history."),
-    Desenvolvedor(4, 'images/jogadores/melton.jpg', "De'Anthony Melton", 8, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
-    Desenvolvedor(5, 'images/jogadores/podziemsk.jpg', "Brandin Podziemski", 2, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
-    Desenvolvedor(6, 'images/jogadores/santos.png', "Gui Santos", 15, false, "Guilherme Carvalho dos Santos (born 22 June 2002) is a Brazilian professional basketball player for the Golden State Warriors of the National Basketball Association (NBA)."),
-    Desenvolvedor(7, 'images/jogadores/green.png', "Draymond Green", 23, false, "Draymond Jamal Green Sr. (born March 4, 1990) is an American professional basketball player for the Golden State Warriors of… frontcourt players capable of playing and defending multiple positions, making plays for teammates, and spacing the floor."),
-    Desenvolvedor(8, 'images/jogadores/horford.jpg', "Al Horford", 20, false, "Alfred Joel Horford Reynoso OMDSM (born June 3, 1986), nicknamed Big Al, is a Dominican professional basketball player for t…prior to the 2021 season. He reached the NBA Finals with the Celtics in 2022 and 2024, winning his first NBA title in 2024."),
-    Desenvolvedor(9, 'images/jogadores/curry.png', "Stephen Curry", 30, false, "Stephen Curry (born March 14, 1988) is an American professional basketball player for the Golden State Warriors, widely recognized as the greatest shooter in NBA history."),
-    Desenvolvedor(10, 'images/jogadores/melton.jpg', "De'Anthony Melton", 8, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
-    Desenvolvedor(11, 'images/jogadores/podziemsk.jpg', "Brandin Podziemski", 2, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
+    Desenvolvedor(0, 'images/desenvolvedores/foto1.png', "Ana Silva", 15, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(1, 'images/desenvolvedores/foto2.png', "Carlos Souza", 23, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(2, 'images/desenvolvedores/foto4.jpg', "Julia Lima", 20, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(3, 'images/desenvolvedores/foto1.png', "Júlia Pereira", 30, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(4, 'images/desenvolvedores/foto4.jpg', "Ana Souza", 8, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(5, 'images/desenvolvedores/foto3.jpg', "Carlos Eduardo", 2, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(6, 'images/desenvolvedores/foto2.png', "Gui Santos", 15, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(7, 'images/desenvolvedores/foto3.png', "Pedro Alves", 23, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(8, 'images/desenvolvedores/foto2.jpg', "Lucas Lima", 20, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(9, 'images/desenvolvedores/foto3.png', "Lucas Pedrosa", 30, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(10, 'images/desenvolvedores/foto1.jpg', "Francisca Oliveira", 8, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
+    Desenvolvedor(11, 'images/desenvolvedores/foto4.jpg', "Ana Barbosa", 2, false, "Sou uma desenvolvedora full stack apaixonada por transformar ideias em  soluções digitais. Tenho experiência em HTML, CSS, JavaScript, Node.js e  SQL."),
   ];
+  String pesquisa = "";
+  List<Desenvolvedor> desenvolvedores = [];
+
+  void initState(){ // inicia o estado da lista exibida
+    super.initState();
+    desenvolvedores = desenvolvedoresFull;
+  }
 
   Widget build(BuildContext bc){
-    List<Desenvolvedor> desenvolvedores = desenvolvedoresFull;
     final largura = MediaQuery.of(bc).size.width;
-    String pesquisa = "";
+
 
     final favoritosProvider = bc.watch<ControleFavoritos>();
 
@@ -55,7 +61,12 @@ class _BuscarDesenvolvedores extends State {
             TextField(
               inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z\s]"))],
               keyboardType: TextInputType.text,
-              onChanged: (texto) => pesquisa = texto, // alimentando a variável de pesquisa
+              onChanged: (texto){
+                setState(() {
+                  pesquisa = texto;
+                });
+                print(pesquisa);
+              }, // alimentando a variável de pesquisa
               decoration: InputDecoration(
                 hintText: "Pesquisar Desenvolvedor...",
                 border: OutlineInputBorder(),
@@ -81,6 +92,9 @@ class _BuscarDesenvolvedores extends State {
                           desenvolvedores = desenvolvedoresFtds;
                         });
                       } else {
+                        setState(() {
+                          desenvolvedores = desenvolvedoresFull;
+                        });
                         print("pesquisa muito curta");
                         final snackBar = SnackBar(
                           content: const Center(child: Text('Caracteres insuficientes. Mínimo de 3.')),
