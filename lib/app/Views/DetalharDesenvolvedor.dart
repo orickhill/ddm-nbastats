@@ -32,7 +32,7 @@ class _DetalharDesenvolvedor extends State{
     super.initState();
     optionBarra = 1;
 
-}
+  }
 
   @override
   Widget build(BuildContext bc){
@@ -56,6 +56,7 @@ class _DetalharDesenvolvedor extends State{
       body: Padding(
         padding: EdgeInsets.all(15),
         child: Column(
+          spacing: 16,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -156,53 +157,59 @@ class _DetalharDesenvolvedor extends State{
 
               ],
             ),
-            Column(
-              children: [
-                Align(
-                  alignment: AlignmentGeometry.topLeft,
-                  child: Text("Sobre mim",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
-                ),
-                Text(
-                    args.desc,
-                    style: TextStyle(color: Color(0xFF323232), fontSize: 15)
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Align(
-                  alignment: AlignmentGeometry.topLeft,
-                  child: Text("Projetos",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+            Builder(builder: (BuildContext c){
+              if(optionBarra == 1){
+                return Column(
                   children: [
-                    Column(
-                      children: [
-                        SizedBox(
-                          width: 100,
-                          height: 100,
-                          child: Image.asset('images/barbearia.jpg'),
-                        ),
-                        Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
-                        Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
-                      ],
+                    Align(
+                      alignment: AlignmentGeometry.topLeft,
+                      child: Text("Sobre mim",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
                     ),
-                    Column(
+                    Text(
+                        args.desc,
+                        style: TextStyle(color: Color(0xFF323232), fontSize: 15)
+                    ),
+                  ],
+                );
+              }
+              else {
+                return Column(
+                  children: [
+                    Align(
+                      alignment: AlignmentGeometry.topLeft,
+                      child: Text("Projetos",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        SizedBox(
-                          width: 100,
-                          height: 100,
-                          child: Image.asset('images/barbearia.jpg'),
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 100,
+                              height: 100,
+                              child: Image.asset('images/barbearia.jpg'),
+                            ),
+                            Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                            Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
+                          ],
                         ),
-                        Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
-                        Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 100,
+                              height: 100,
+                              child: Image.asset('images/barbearia.jpg'),
+                            ),
+                            Text("MAriano Cabeleleiro",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                            Text("Salão, Website, agenda",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 12))
+                          ],
+                        )
                       ],
                     )
                   ],
-                )
-              ],
-            ),
+                );
+              }
+            }),
             Padding(
               padding: EdgeInsets.all(15),
               child: Column(

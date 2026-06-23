@@ -32,6 +32,8 @@ class Login extends StatelessWidget{
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
+                    //labelText: "E-mail",
+                    labelStyle: TextStyle(color: Color(0xFF323232)),
                     hintText: "Informe seu email...", // Informe sua senha
                     border: OutlineInputBorder(),
                   ),
@@ -49,6 +51,8 @@ class Login extends StatelessWidget{
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
+                    //labelText: "Senha",
+                    labelStyle: TextStyle(color: Color(0xFF323232)),
                     hintText: "Informe sua senha...",
                     border: OutlineInputBorder(),
                   ),
