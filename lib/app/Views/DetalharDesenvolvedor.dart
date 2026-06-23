@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:projeto/app/Models/Desenvolvedor.dart';
 
-/*void main(){
-  runApp(DetalharDesenvolvedor());
-}*/
+class DetalharDesenvolvedor extends StatefulWidget{
+  const DetalharDesenvolvedor({super.key});
 
-class DetalharDesenvolvedor extends StatelessWidget{
+  @override
+  _DetalharDesenvolvedor createState() => _DetalharDesenvolvedor();
+}
+
+class _DetalharDesenvolvedor extends State{
   final List<Desenvolvedor> desenvolvedores = <Desenvolvedor>[
     Desenvolvedor(0, 'images/jogadores/santos.png', "Gui Santos", 15, true, "Guilherme Carvalho dos Santos (born 22 June 2002) is a Brazilian professional basketball player for the Golden State Warriors of the National Basketball Association (NBA)."),
     Desenvolvedor(1, 'images/jogadores/green.png', "Draymond Green", 23, true, "Draymond Jamal Green Sr. (born March 4, 1990) is an American professional basketball player for the Golden State Warriors of… frontcourt players capable of playing and defending multiple positions, making plays for teammates, and spacing the floor."),
@@ -21,6 +24,17 @@ class DetalharDesenvolvedor extends StatelessWidget{
     Desenvolvedor(10, 'images/jogadores/melton.jpg', "De'Anthony Melton", 8, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
     Desenvolvedor(11, 'images/jogadores/podziemsk.jpg', "Brandin Podziemski", 2, false, "De'Anthony Melton (born May 28, 1998), nicknamed 'Mr. Do Something', is an American professional basketball player for the G…before being traded to the Philadelphia 76ers during the 2022 off-season. He has also played for the Golden State Warriors."),
   ];
+
+  int optionBarra = 1; // 1, 2 ou 3.
+
+  @override
+  void initState(){
+    super.initState();
+    optionBarra = 1;
+
+}
+
+  @override
   Widget build(BuildContext bc){
     final args = ModalRoute.of(bc)!.settings.arguments as Desenvolvedor;
     return Scaffold(
@@ -38,19 +52,6 @@ class DetalharDesenvolvedor extends StatelessWidget{
             ),
           ],
         )
-        /*Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              onPressed: () => Navigator.pop(bc),
-              icon: Icon(Icons.arrow_back_ios_new, color: Colors.white, size: 40),
-            ),
-            IconButton(
-                onPressed: () => print("compartilhando..."),
-                icon: Icon(Icons.share, color: Colors.white, size: 40)
-            ),
-          ],
-        ),*/
       ),
       body: Padding(
         padding: EdgeInsets.all(15),
@@ -70,12 +71,12 @@ class DetalharDesenvolvedor extends StatelessWidget{
                     Text(args.nome, style: TextStyle(color: Color(0xFF323232), fontSize: 22)),
                     Row(
                       children: [
-                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 12),
-                        Text(" (5.0 - " + args.avaliacao.toString() + " avalações)", style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                        Icon(Icons.star, color: args.avaliacao >= 1 ? Color(0xFFFFCC00) : Colors.grey, size: 12),
+                        Icon(Icons.star, color: args.avaliacao >= 2 ? Color(0xFFFFCC00) : Colors.grey, size: 12),
+                        Icon(Icons.star, color: args.avaliacao >= 3 ? Color(0xFFFFCC00) : Colors.grey, size: 12),
+                        Icon(Icons.star, color: args.avaliacao >= 4 ? Color(0xFFFFCC00) : Colors.grey, size: 12),
+                        Icon(Icons.star, color: args.avaliacao >= 5 ? Color(0xFFFFCC00) : Colors.grey, size: 12),
+                        Text(" (5.0 - " + args.avaliacao.toString() + " avaliações)", style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
                       ],
                     ),
                     Text("Setores: E-commerce, beleza, IA.", style: TextStyle(color: Color(0xFF323232), fontSize: 15))
@@ -86,49 +87,73 @@ class DetalharDesenvolvedor extends StatelessWidget{
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
-                  width: 115,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.deepPurple,
-                      border: Border.all(
-                        color: Colors.deepPurple, // Border color
-                        width: 2.0,         // Border thickness
-                      ),
-                      borderRadius: BorderRadius.circular(150) // Optional: rounded corners
-                  ),
-                  child: Center(
-                    child: Text('Sobre mim', style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-                Container(
-                  width: 115,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.deepPurple, // Border color
-                        width: 2.0,         // Border thickness
-                      ),
-                      borderRadius: BorderRadius.circular(150) // Optional: rounded corners
-                  ),
-                  child: Center(
-                    child: Text('Projetos'),
+                GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      optionBarra = 1;
+                    });
+                  },
+                  child: Container(
+                    width: 115,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        color: optionBarra == 1 ? Colors.deepPurple : Colors.white,
+                        border: Border.all(
+                          color: Colors.deepPurple, // Border color
+                          width: 2.0,         // Border thickness
+                        ),
+                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
+                    ),
+                    child: Center(
+                      child: Text('Sobre mim',  style: TextStyle(color: optionBarra == 1 ? Colors.white : Color(0xFF323232)),),
+                    ),
                   ),
                 ),
-                Container(
-                  width: 115,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.deepPurple, // Border color
-                        width: 2.0,         // Border thickness
-                      ),
-                      borderRadius: BorderRadius.circular(150) // Optional: rounded corners
+                GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      optionBarra = 2;
+                    });
+                  },
+                  child: Container(
+                    width: 115,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        color: optionBarra == 2 ? Colors.deepPurple : Colors.white,
+                        border: Border.all(
+                          color: Colors.deepPurple, // Border color
+                          width: 2.0,         // Border thickness
+                        ),
+                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
+                    ),
+                    child: Center(
+                      child: Text('Projetos', style: TextStyle(color: optionBarra == 2 ? Colors.white : Color(0xFF323232)),),
+                    ),
                   ),
-                  child: Center(
-                    child: Text('Avaliações'),
+                ),
+                GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      optionBarra = 3;
+                    });
+                  },
+                  child: Container(
+                    width: 115,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        color: optionBarra == 3 ? Colors.deepPurple : Colors.white,
+                        border: Border.all(
+                          color: Colors.deepPurple, // Border color
+                          width: 2.0,         // Border thickness
+                        ),
+                        borderRadius: BorderRadius.circular(150) // Optional: rounded corners
+                    ),
+                    child: Center(
+                      child: Text('Avaliações', style: TextStyle(color: optionBarra == 3 ? Colors.white : Color(0xFF323232)),),
+                    ),
                   ),
                 )
+
               ],
             ),
             Column(

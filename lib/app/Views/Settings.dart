@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/app/templates/Home.dart';
+import 'package:projeto/app/Views/Home.dart';
 import 'package:flutter/services.dart';
 
 class Settings extends StatelessWidget{

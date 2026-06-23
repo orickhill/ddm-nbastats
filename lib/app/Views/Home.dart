@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:projeto/app/Models/Desenvolvedor.dart';
-import 'package:projeto/app/templates/BuscarDesenvolvedores.dart';
-import 'package:projeto/app/templates/Login.dart';
-import 'package:projeto/app/templates/Perfil.dart';
+import 'package:projeto/app/Views/BuscarDesenvolvedores.dart';
+import 'package:projeto/app/Views/Login.dart';
+import 'package:projeto/app/Views/Perfil.dart';
 
 class Home extends StatelessWidget{
   Widget build(BuildContext bc){

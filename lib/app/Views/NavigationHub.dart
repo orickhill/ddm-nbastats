@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/app/templates/BuscarDesenvolvedores.dart';
-import 'package:projeto/app/templates/DetalharDesenvolvedor.dart';
-import 'package:projeto/app/templates/Home.dart';
-import 'package:projeto/app/templates/Login.dart';
-import 'package:projeto/app/templates/Perfil.dart';
-import 'package:projeto/app/templates/Settings.dart';
+import 'package:projeto/app/Views/BuscarDesenvolvedores.dart';
+import 'package:projeto/app/Views/DetalharDesenvolvedor.dart';
+import 'package:projeto/app/Views/Home.dart';
+import 'package:projeto/app/Views/Login.dart';
+import 'package:projeto/app/Views/Perfil.dart';
+import 'package:projeto/app/Views/Settings.dart';
 
 class NavigationHub extends StatelessWidget{
   final ValueNotifier<int> _indicePai = ValueNotifier<int>(0);
