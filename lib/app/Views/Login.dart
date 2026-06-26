@@ -85,7 +85,7 @@ class Login extends StatelessWidget{
                   ),
                 ),
               ),
-              GestureDetector(
+              /*GestureDetector(
                 onTap: (){
                   print("Entrar como visitante...");
                 },
@@ -97,7 +97,7 @@ class Login extends StatelessWidget{
                       child: Text("Entrar como visitante", style: TextStyle(color: Colors.white,),)
                   ),
                 ),
-              )
+              )*/
             ],
           ),
         ),

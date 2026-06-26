@@ -54,6 +54,14 @@ class NavigationHub extends StatelessWidget{
                       child: Text("Menu")
                   ),
                   ListTile(
+                    leading: Icon(Icons.screen_share_outlined,),
+                    title: Text("Adicionar Projeto"),
+                    onTap: (){
+                      Navigator.pop(bc); // fecha o Drawer
+                      Navigator.pushNamed(bc, "/adicionar-projeto");
+                    },
+                  ),
+                  ListTile(
                     leading: Icon(Icons.settings,),
                     title: Text("Configurações"),
                     onTap: (){
@@ -65,8 +73,6 @@ class NavigationHub extends StatelessWidget{
                     leading: Icon(Icons.info_outline,),
                     title: Text("Sobre"),
                     onTap: (){
-                      print("Sobre");
-
                       showDialog(context: bc, builder: (context) => AlertDialog(
                         title: Text("Sobre o App"),
                         content: Text("Desenvolvido para a disciplina de Mobile."),

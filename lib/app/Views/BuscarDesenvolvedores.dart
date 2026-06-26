@@ -88,38 +88,13 @@ class _BuscarDesenvolvedores extends State {
               }, // alimentando a variável de pesquisa
               onSubmitted: (_) => pesquisar(),
               decoration: InputDecoration(
-                hintText: "Pesquisar Desenvolvedor...",
+                labelText: "Palvra-chave",
+                //hintText: "Pesquisar Desenvolvedor...",
                 border: OutlineInputBorder(),
                 suffixIcon: Builder(builder: (BuildContext nc){
                   return IconButton(
                     icon: Icon(Icons.search),
-                    onPressed: pesquisar,/*() {
-                      if(pesquisa.length >= 3){
-                        List<Desenvolvedor> desenvolvedoresFtds = [];
-                        for(int i = 0; i < desenvolvedoresFull.length; i++){
-                          Desenvolvedor dev = desenvolvedoresFull[i];
-                          if(dev.nome.contains(RegExp(pesquisa, caseSensitive: false))){
-                            desenvolvedoresFtds.add(dev);
-                          }
-                        }
-
-                        setState(() {
-                          desenvolvedores = desenvolvedoresFtds;
-                        });
-                      } else {
-                        setState(() {
-                          desenvolvedores = desenvolvedoresFull;
-                        });
-                        final snackBar = SnackBar(
-                          content: const Center(child: Text('Caracteres insuficientes. Mínimo de 3.')),
-                          duration: Duration(seconds: 2),
-                          behavior: SnackBarBehavior.floating,
-                          showCloseIcon: true,
-                        );
-
-                        ScaffoldMessenger.of(nc).showSnackBar(snackBar);
-                      }
-                    },*/
+                    onPressed: pesquisar,
                   );
                 }),
               ),
@@ -169,7 +144,7 @@ class _BuscarDesenvolvedores extends State {
                                   children: [
                                     Text(dev.nome, style: TextStyle(color: Color(0xFF323232))),
                                     Row(
-                                      children: [ // Color(0xFFFFCC00)
+                                      children: [
                                         Icon(Icons.star, color: dev.avaliacao >= 1 ? Color(0xFFFFCC00) : Colors.grey, size: 12),
                                         Icon(Icons.star, color: dev.avaliacao >= 2 ? Color(0xFFFFCC00) : Colors.grey, size: 12),
                                         Icon(Icons.star, color: dev.avaliacao >= 3 ? Color(0xFFFFCC00) : Colors.grey, size: 12),
@@ -197,7 +172,6 @@ class _BuscarDesenvolvedores extends State {
                                         label: 'Desfazer',
                                         onPressed: () {
                                           favoritosProvider.atualizar(index); // atualiza favorito
-                                          //j.favorito = !j.favorito;
                                         },
                                       ),
                                     );
