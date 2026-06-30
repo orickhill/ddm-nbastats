@@ -172,7 +172,7 @@ class _DetalharDesenvolvedor extends State{
                   ],
                 );
               }
-              else {
+              else if (optionBarra == 2){
                 return Column(
                   children: [
                     Align(
@@ -208,6 +208,8 @@ class _DetalharDesenvolvedor extends State{
                     )
                   ],
                 );
+              } else {
+                return AbaAvaliacoes();
               }
             }),
             Padding(
@@ -231,6 +233,91 @@ class _DetalharDesenvolvedor extends State{
           ],
         ),
       ),
+    );
+  }
+}
+
+// Aba de Avaliações
+class AbaAvaliacoes extends StatelessWidget{
+  const AbaAvaliacoes({super.key});
+
+  @override
+  Widget build(BuildContext bc){
+    return Column(
+      children: [
+        Align(
+          alignment: AlignmentGeometry.topLeft,
+          child: Text("Avaliações",  style: TextStyle(color: Color(0xFF323232), fontSize: 25)),
+        ),
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: AlignmentGeometry.topLeft,
+                  child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
+                ),
+                Row(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                      ],
+                    ),
+                    Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                  ],
+                )
+              ],
+            ),
+            Align(
+              alignment: AlignmentGeometry.topLeft,
+              child: Text(
+                  "Excelente profissional!",
+                  style: TextStyle(color: Color(0xFF323232), fontSize: 18)
+              ),
+            )
+          ],
+        ),
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: AlignmentGeometry.topLeft,
+                  child: Text("Ótimo",  style: TextStyle(color: Color(0xFF4294A2), fontSize: 22)),
+                ),
+                Row(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                        Icon(Icons.star, color: Color(0xFFFFCC00), size: 15),
+                      ],
+                    ),
+                    Text("5.0",  style: TextStyle(color: Color(0xFF323232), fontSize: 15)),
+                  ],
+                )
+              ],
+            ),
+            Align(
+              alignment: AlignmentGeometry.topLeft,
+              child: Text(
+                  "Excelente profissional!",
+                  style: TextStyle(color: Color(0xFF323232), fontSize: 18)
+              ),
+            )
+          ],
+        ),
+      ],
     );
   }
 }

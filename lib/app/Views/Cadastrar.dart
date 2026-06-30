@@ -68,15 +68,12 @@ class _CadastroForm extends State<CadastroForm> {
       key: _formKey,
       child: Column(
         spacing: 16,
-        //mainAxisAlignment: MainAxisAlignment.center,
-        //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           TextFormField( // nome
             keyboardType: TextInputType.text,
             inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z\s]"))],
             decoration: InputDecoration(
               labelText: "Nome",
-              hintText: "Digite seu nome",
             ),
             onChanged: (valor){
               setState(() {
@@ -95,7 +92,6 @@ class _CadastroForm extends State<CadastroForm> {
             inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z\s]"))],
             decoration: InputDecoration(
               labelText: "Sobrenome",
-              hintText: "Digite seu sobrenome",
             ),
             onChanged: (valor){
               setState(() {
@@ -114,7 +110,6 @@ class _CadastroForm extends State<CadastroForm> {
             inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r"[0-9]"))],
             decoration: InputDecoration(
               labelText: "CPF",
-              hintText: "Digite seu CPF",
             ),
             onChanged: (valor){
               setState(() {
@@ -133,7 +128,6 @@ class _CadastroForm extends State<CadastroForm> {
             inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r"[a-zA-Z\s]"))],
             decoration: InputDecoration(
               labelText: "Github",
-              hintText: "Digite seu Github",
             ),
             onChanged: (valor){
               setState(() {
@@ -151,7 +145,6 @@ class _CadastroForm extends State<CadastroForm> {
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               labelText: "E-mail",
-              hintText: "Digite seu e-mail",
             ),
             onChanged: (valor){
               setState(() {
@@ -170,7 +163,6 @@ class _CadastroForm extends State<CadastroForm> {
             obscureText: true,
             decoration: InputDecoration(
               labelText: "Senha",
-              hintText: "Digite sua senha segura",
             ),
             onChanged: (valor){
               setState(() {

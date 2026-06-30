@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-const List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+const List<String> categorias = <String>['One', 'Two', 'Three', 'Four'];
+const List<String> statusChoices = <String>['Concluído', 'Em Andamento'];
 
 class AdicionarProjeto extends StatefulWidget {
 
@@ -9,15 +10,6 @@ class AdicionarProjeto extends StatefulWidget {
 }
 
 class _AdicionarProjeto extends State {
-  int descTextFieldHeight = 0;
-  int lineLength = 0;
-
-  @override
-  void initState(){
-    super.initState();
-    descTextFieldHeight = 50;
-    lineLength = 1;
-  }
 
   @override
   Widget build(BuildContext context){
@@ -28,87 +20,147 @@ class _AdicionarProjeto extends State {
         backgroundColor: const Color(0xFF682EA3),
         title: Text("Adicionar Projeto", style: TextStyle(color: Colors.white),),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(15),
-        child: Column(
-          spacing: 10,
-          children: [
-            SizedBox( // Nome
-              width: double.infinity,
-              height: 50,
-              child: TextField(
-                keyboardType: TextInputType.text,
-                onChanged: (texto){
-                  print(texto);
-                },
-                decoration: InputDecoration(
-                  //filled: true,
-                  //fillColor: Colors.white,
-                  labelText: "Título do Projeto",
-                  //hintText: "Nome",
-                  border: OutlineInputBorder(),
-                ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(15),
+          child: Column(
+            spacing: 10,
+            children: [
+              SizedBox(
+                width: 320,
+                child: Text("Preencha as informações abaixo para adicionar um sistema.", style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500, color: Color(0xFF323232)), textAlign: TextAlign.center),
               ),
-            ),
-            SizedBox( // Setor
-              width: double.infinity,
-              height: 50,
-              child: TextField(
-                keyboardType: TextInputType.text,
-                onChanged: (texto){
-                  print(texto);
-                },
-                decoration: InputDecoration(
-                  //filled: true,
-                  //fillColor: Colors.white,
-                  labelText: "Setor",
-                  //hintText: "Nome",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
-            SizedBox( // Descrição
-              height: descTextFieldHeight.toDouble(),
-              child: TextField(
-                maxLines: 8,
-                keyboardType: TextInputType.text,
-                style: TextStyle(),
-                onChanged: (texto){
-                  print("numberLines: " + lineLength.toString());
-                  setState(() {
-                    lineLength = '\\n'.allMatches(texto).length + 1;//texto.split(RegExp(r'\r?\n')).length;
-                  });
-                  setState(() {
-                    descTextFieldHeight = descTextFieldHeight == 50*8 ? descTextFieldHeight : lineLength * 50;
-                  });
-                },
-                decoration: InputDecoration(
-                  //filled: true,
-                  //fillColor: Colors.white,
-                  labelText: "Descrição",
-                  //hintText: "Nome",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 2,
-              children: [
-                Text("Selecione a categoria"),
-                SizedBox(
-                  height: 50,
-                  child: DropDownCategorias(),
-                )
-              ],
-            ),
-          ],
+              AdicionarProjetoForm(), // Formulário de Adicionar Projeto
+            ],
+          ),
         ),
       )
     );
   }
 }
+
+
+class AdicionarProjetoForm extends StatefulWidget {
+  const AdicionarProjetoForm({super.key});
+
+  @override
+  _AdicionarProjetoForm createState() => _AdicionarProjetoForm();
+}
+
+
+class _AdicionarProjetoForm extends State {
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        spacing: 16,
+        children: [
+          TextFormField( // Nome
+            keyboardType: TextInputType.text,
+            onChanged: (texto){
+              print(texto);
+            },
+            decoration: InputDecoration(
+              labelText: "Título do Projeto",
+              border: OutlineInputBorder(),
+            ),
+            validator: (value){
+              if(value == null || value.isEmpty){
+                return "O campo Nome é obrigatório";
+              }
+              return null;
+            },
+          ),
+          TextFormField( // Setor
+            keyboardType: TextInputType.text,
+            onChanged: (texto){
+              print(texto);
+            },
+            decoration: InputDecoration(
+
+              labelText: "Setor",
+              border: OutlineInputBorder(),
+            ),
+            validator: (value){
+              if(value == null || value.isEmpty){
+                return "O campo Setor é obrigatório";
+              }
+              return null;
+            },
+          ),
+          TextFormField(
+            minLines: 3,
+            maxLines: 8,
+            keyboardType: TextInputType.multiline,
+            style: TextStyle(),
+            onChanged: (texto){
+              print(texto);
+            },
+            decoration: InputDecoration(
+              labelText: "Descrição",
+              alignLabelWithHint: true,
+              hintText: "Descreva os principais pontos do projeto...",
+              border: OutlineInputBorder(),
+            ),
+            validator: (value){
+              if(value == null || value.isEmpty){
+                return "O campo Descrição é obrigatório";
+              }
+              return null;
+            },
+          ),
+          Column( // Dropdown Categorias
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            spacing: 4,
+            children: [
+              Text("Selecione a categoria", style: TextStyle(fontSize: 18),),
+              SizedBox(
+                //height: 50,
+                //width: 300,
+                child: DropDownCategorias(),
+              )
+            ],
+          ),
+          Column( // Dropdown Status
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            spacing: 4,
+            children: [
+              Text("Selecione o Status", style: TextStyle(fontSize: 18),),
+              SizedBox(
+                //height: 50,
+                //width: 300,
+                child: DropDownStatus(),
+              )
+            ],
+          ),
+          TextButton(
+            onPressed: (){
+              if(_formKey.currentState!.validate()){
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text("Salvando dados..."))
+                );
+                //Navigator.pushReplacementNamed(context, '/home');
+              }
+            },
+            child: Container(
+              width: 280,
+              height: 40,
+              color: Color(0xFF0AA822),
+              child: Center(
+                child: Text("Adicionar", style: TextStyle(color: Colors.white,),)
+              ),
+            ),
+          )
+        ],
+      )
+    );
+  }
+}
+
+
 
 // DropDown para selecionar a categoria
 class DropDownCategorias extends StatefulWidget {
@@ -119,11 +171,12 @@ class DropDownCategorias extends StatefulWidget {
 }
 
 class _DropDownCategorias extends State {
-  String dropdownValue = list.first;
+  String dropdownValue = categorias.first;
 
   @override
   Widget build(BuildContext context){
     return DropdownButton(
+      isExpanded: true,
       value: dropdownValue,
       icon: Icon(Icons.arrow_drop_down_sharp),
       elevation: 16,
@@ -132,7 +185,38 @@ class _DropDownCategorias extends State {
           dropdownValue = value!;
         });
       },
-      items: list.map<DropdownMenuItem<String>>((String value) {
+      items: categorias.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(value: value, child: Text(value));
+      }).toList(),
+    );
+  }
+}
+
+
+// DropDown para selecionar o Status do projeto
+class DropDownStatus extends StatefulWidget {
+  const DropDownStatus({super.key});
+
+  @override
+  _DropDownStatus createState() => _DropDownStatus();
+}
+
+class _DropDownStatus extends State {
+  String dropdownValue = statusChoices.first;
+
+  @override
+  Widget build(BuildContext context){
+    return DropdownButton(
+      isExpanded: true,
+      value: dropdownValue,
+      icon: Icon(Icons.arrow_drop_down_sharp),
+      elevation: 16,
+      onChanged: (value){
+        setState(() {
+          dropdownValue = value!;
+        });
+      },
+      items: statusChoices.map<DropdownMenuItem<String>>((String value){
         return DropdownMenuItem<String>(value: value, child: Text(value));
       }).toList(),
     );
