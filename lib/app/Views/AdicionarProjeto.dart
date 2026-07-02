@@ -91,7 +91,7 @@ class _AdicionarProjetoForm extends State {
               return null;
             },
           ),
-          TextFormField(
+          TextFormField( // Descrição
             minLines: 3,
             maxLines: 8,
             keyboardType: TextInputType.multiline,

@@ -5,7 +5,7 @@ import 'package:projeto/app/Views/BuscarDesenvolvedores.dart';
 import 'package:projeto/app/Views/Cadastrar.dart';
 import 'package:projeto/app/Views/DetalharDesenvolvedor.dart';
 import 'package:projeto/app/Views/Login.dart';
-import 'package:projeto/app/Views/MostrarAvaliacoes.dart';
+import 'package:projeto/app/Views/AvaliarDesenvolvedor.dart';
 import 'package:projeto/app/Views/Settings.dart';
 import 'package:projeto/app/Views/NavigationHub.dart';
 import 'package:projeto/app/Views/Splash.dart';
@@ -35,7 +35,7 @@ class MinhaApp extends StatelessWidget{
         "/detalhes": (c){return DetalharDesenvolvedor();},
         "/settings": (c){return Settings();},
         "/login": (c){return Login();},
-        "/avaliacoes": (c){return Mostraravaliacoes();},
+        "/avaliar": (c){return Avaliardesenvolvedor();},
         "/": (c){return Splash();},
         "/cadastrar": (c){return Cadastrar();},
         "/adicionar-projeto": (c){return AdicionarProjeto();},
